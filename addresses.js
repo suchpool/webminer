@@ -35,10 +35,10 @@ function sha256(buf) {
 	return hash.digest();
 };
 
-var dogeRegExp = /^D([123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{33})$/;
+var rubyRegExp = /^R([123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{33})$/;
 function validAddress(string) {
 	// Do a very basic regex check first
-	if (!dogeRegExp.test(string)) return false;
+	if (!rubyRegExp.test(string)) return false;
 	
 	var decoded = base58.decode(string);
 	
@@ -50,7 +50,7 @@ function validAddress(string) {
 		decoded = '0' + decoded;
 	}
 	
-	// Make sure it's a Dogecoin address
+	// Make sure it's a Rubycoin address
 	if (decoded.substr(0, 2) != '1e') return false;
 	
 	// Split into key and signature
